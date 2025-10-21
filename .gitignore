@@ -1,0 +1,44 @@
+# Caches de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.ipynb_checkpoints # Para notebooks de Jupyter
+
+# Entornos virtuales
+# Ignora el directorio del entorno virtual
+.venv/
+venv/
+env/
+/bin/ # A veces el entorno virtual puede estar aquí
+
+# Archivos de build y distribución
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# IDEs y Editores Comunes
+# Visual Studio Code
+.vscode/
+
+# PyCharm/IntelliJ
+.idea/
+
+# Jupyter Notebook (archivos temporales)
+.ipynb_checkpoints/
+
+# Archivos de configuración y logs
+*.log
+*.sqlite3 # Comúnmente usado por Django
+
+# Dependencias instaladas
+# A veces, los paquetes de terceros se instalan en el directorio raíz
+# Aunque la mejor práctica es usar un entorno virtual
+lib/
+include/
+
+# Variables de entorno sensibles (¡MUY IMPORTANTE!)
+.env
+.flaskenv
