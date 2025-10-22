@@ -1,18 +1,24 @@
 # Manuel Gutierrez @migs612
 import sys
+import os
 
-def buscar_texto(filename, search):
+def main(argv=None):
+    if argv is None: argv = sys.argv
+    if len(argv) != 3:
+        print(f"Uso: python {argv[0]} <archivo> <texto>")
+        return 1
+    filename, search = argv[1], argv[2]
     try:
+        if not os.path.exists(filename):
+            print(f"Error: el archivo '{filename}' no existe.")
+            return 2
         with open(filename, 'r', encoding='utf-8') as f:
-            content = f.read()
-            count = content.count(search)
-            print(f"{search}: {count}")
-    except FileNotFoundError:
-        print("Archivo no encontrado.")
-    except Exception as e:
-        print(f"Error: {e}")
+            count = f.read().count(search)
+        print(f"{search} : {count}")
+        return 0
+    except Exception:
+        print("Se produjo un error al leer el archivo.")
+        return 3
 
-if len(sys.argv) == 3:
-    buscar_texto(sys.argv[1], sys.argv[2])
-else:
-    print("Uso: python FindFile.py <archivo> <texto>")
+if __name__ == '__main__':
+    sys.exit(main())

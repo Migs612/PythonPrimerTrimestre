@@ -1,17 +1,29 @@
-# Manuel Gutierrez @migs612
+# Autor: Manuel Gutierrez @migs612
 import sys
 
-def mostrar_archivo(filename):
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
+
+    if len(argv) != 2:
+        prog = argv[0] if argv else 'TypeFile.py'
+        print(f"Uso: python {prog} <archivo>")
+        return 1
+
+    filename = argv[1]
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             for i, line in enumerate(f, 1):
-                print(f"{i}: {line.rstrip()}")
+                print(f"{i:04d}: {line.rstrip()}")
     except FileNotFoundError:
-        print("Archivo no encontrado.")
+        print(f"Error: el archivo '{filename}' no existe.")
+        return 2
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Se produjo un error al leer el archivo: {e}")
+        return 3
 
-if len(sys.argv) == 2:
-    mostrar_archivo(sys.argv[1])
-else:
-    print("Uso: python TypeFile.py <archivo>")
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
