@@ -2,8 +2,10 @@
 import sys
 import os
 
+
 def main(argv=None):
-    if argv is None: argv = sys.argv
+    if argv is None:
+        argv = sys.argv
     if len(argv) != 3:
         print(f"Uso: python {argv[0]} <archivo> <texto>")
         return 1
@@ -12,7 +14,7 @@ def main(argv=None):
         if not os.path.exists(filename):
             print(f"Error: el archivo '{filename}' no existe.")
             return 2
-        with open(filename, 'r', encoding='utf-8') as f:
+        with open(filename, "r", encoding="utf-8") as f:
             count = f.read().count(search)
         print(f"{search} : {count}")
         return 0
@@ -20,5 +22,6 @@ def main(argv=None):
         print("Se produjo un error al leer el archivo.")
         return 3
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     sys.exit(main())

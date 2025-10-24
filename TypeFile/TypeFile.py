@@ -1,18 +1,19 @@
 # Autor: Manuel Gutierrez @migs612
 import sys
 
+
 def main(argv=None):
     if argv is None:
         argv = sys.argv
 
     if len(argv) != 2:
-        prog = argv[0] if argv else 'TypeFile.py'
+        prog = argv[0] if argv else "TypeFile.py"
         print(f"Uso: python {prog} <archivo>")
         return 1
 
     filename = argv[1]
     try:
-        with open(filename, 'r', encoding='utf-8') as f:
+        with open(filename, "r", encoding="utf-8") as f:
             for i, line in enumerate(f, 1):
                 print(f"{i:04d}: {line.rstrip()}")
     except FileNotFoundError:
@@ -25,5 +26,5 @@ def main(argv=None):
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main())

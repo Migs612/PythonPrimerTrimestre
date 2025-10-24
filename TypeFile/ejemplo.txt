@@ -1,0 +1,33 @@
+Este es un archivo de ejemplo para probar lectura de archivos en Python.
+
+Primera línea de contenido real.
+Segunda línea con algunos números: 12345 67890
+Tercera línea con caracteres especiales: áéíóú ñ ¿? ¡!
+
+--- Sección de datos ---
+Nombre: Juan Pérez
+Edad: 30
+Ciudad: Madrid
+Profesión: Desarrollador de Software
+
+--- Lista de elementos ---
+1. Manzanas
+2. Naranjas
+3. Plátanos
+4. Fresas
+5. Uvas
+
+--- Texto con múltiples líneas ---
+Python es un lenguaje de programación interpretado
+cuya filosofía hace hincapié en la legibilidad de su código.
+Se trata de un lenguaje de programación multiparadigma,
+ya que soporta parcialmente la orientación a objetos,
+programación imperativa y programación funcional.
+
+--- Números aleatorios ---
+42 108 256 512 1024 2048 4096
+3.14159 2.71828 1.41421 1.73205
+
+--- Final del archivo ---
+Este es el final del archivo de prueba.
+¡Espero que tu script funcione correctamente!
