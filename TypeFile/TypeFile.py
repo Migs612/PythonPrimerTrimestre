@@ -7,8 +7,7 @@ def main(argv=None):
         argv = sys.argv
 
     if len(argv) != 2:
-        prog = argv[0] if argv else "TypeFile.py"
-        print(f"Uso: python {prog} <archivo>")
+        print("Uso: python TypeFile.py <archivo>")
         return 1
 
     filename = argv[1]

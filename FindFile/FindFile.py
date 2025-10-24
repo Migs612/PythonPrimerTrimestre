@@ -7,7 +7,7 @@ def main(argv=None):
     if argv is None:
         argv = sys.argv
     if len(argv) != 3:
-        print(f"Uso: python {argv[0]} <archivo> <texto>")
+        print(f"Uso: python FindFile.py <archivo> <texto>")
         return 1
     filename, search = argv[1], argv[2]
     try:
