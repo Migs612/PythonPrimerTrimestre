@@ -58,8 +58,6 @@ def main(argumentos=None):
 
     carpeta = argumentos[2] if len(argumentos) >= 3 else "img"
 
-    os.system("cls" if os.name == "nt" else "clear")
-
     try:
         creados = crear_pngs(cantidad, carpeta)
         print(f"Se crearon {creados} archivos PNG en la carpeta '{carpeta}'.")
