@@ -1,299 +1,140 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fauna de España — Blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #f6fbfc;
-            --card: #ffffff;
-            --accent: #0b586f;
-            --muted: #64707a;
-            --soft: #eef6f8;
-            --accent-2: #f2c94c;
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        body {
-            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            background: var(--bg);
-            color: #0b2732;
-            margin: 0;
-            padding: 2.5rem
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem
-        }
-
-        .brand {
-            display: flex;
-            gap: .8rem;
-            align-items: center
-        }
-
-        .logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #0b586f, #3aa1b1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.25rem;
-            color: var(--accent)
-        }
-
-        header p {
-            margin: 0;
-            color: var(--muted);
-            font-size: .95rem
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 1rem
-        }
-
-        nav a {
-            color: var(--muted);
-            text-decoration: none;
-            padding: .4rem .6rem;
-            border-radius: 6px
-        }
-
-        nav a.active,
-        nav a:hover {
-            background: var(--soft);
-            color: var(--accent)
-        }
-
-        main {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 1rem;
-            align-items: start
-        }
-
-        .post {
-            background: var(--card);
-            border-radius: 12px;
-            padding: 1rem;
-            box-shadow: 0 6px 20px rgba(12, 32, 40, 0.06);
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start
-        }
-
-        .thumb {
-            width: 220px;
-            height: 140px;
-            flex: 0 0 220px;
-            border-radius: 8px;
-            overflow: hidden
-        }
-
-        .thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block
-        }
-
-        .post h2 {
-            margin: 0 0 .25rem 0;
-            font-size: 1.1rem;
-            color: #09323f
-        }
-
-        .excerpt {
-            color: var(--muted);
-            margin: 0 0 .6rem 0;
-            line-height: 1.4
-        }
-
-        .meta {
-            font-size: .88rem;
-            color: var(--muted)
-        }
-
-        .tag {
-            background: #eef9fb;
-            color: var(--accent);
-            padding: 4px 8px;
-            border-radius: 999px;
-            font-size: .8rem
-        }
-
-        #featured-animal {
-            display: block;
-            margin-top: .6rem;
-            padding: .8rem;
-            background: linear-gradient(90deg, #fff8e1, #fffdf6);
-            border-left: 6px solid var(--accent-2);
-            border-radius: 6px;
-            font-weight: 600;
-            color: #15333a
-        }
-
-        aside .widget {
-            background: var(--card);
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 20px rgba(12, 32, 40, 0.04);
-            margin-bottom: 1rem
-        }
-
-        .widget h4 {
-            margin: 0 0 .6rem 0
-        }
-
-        .tags {
-            display: flex;
-            gap: .5rem;
-            flex-wrap: wrap
-        }
-
-        footer {
-            text-align: center;
-            color: var(--muted);
-            margin-top: 1rem;
-            font-size: .9rem
-        }
-
-        @media (max-width:900px) {
-            main {
-                grid-template-columns: 1fr
-            }
-
-            .thumb {
-                display: none
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fauna de España - Blog de Biodiversidad</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Fauna de España</div>
+        </div>
+    </header>
+
     <div class="container">
-        <header>
-            <div class="brand">
-                <div class="logo">FE</div>
-                <div>
-                    <h1>Fauna de España</h1>
-                    <p>Historias, fichas y noticias sobre la fauna ibérica</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a class="active" href="#">Inicio</a></li>
-                    <li><a href="#">Especies</a></li>
-                    <li><a href="#">Conservación</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main>
-            <section>
-                <article class="post">
-                    <div class="thumb"><img
-                            src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=60"
-                            alt="Gato montés"></div>
-                    <div>
-                        <h2>El gato montés en la península</h2>
-                        <p class="meta">Publicado: <time datetime="2025-11-01">1 Nov 2025</time> — Autor: <strong>María
-                                López</strong></p>
-                        <p class="excerpt">El gato montés (<em>Felis silvestris</em>) habita zonas de matorral y bosque.
-                            Compartimos una ficha breve y observaciones recientes realizadas por guardas forestales.</p>
-                        <p id="featured-animal">Nombre: Gato montés — Edad estimada: 3 años — Observado en: Sierra
-                            Morena — Coordenadas: 38.123N, -4.123W</p>
-                        <p class="meta">Estado: Observado en libertad — Comportamiento: Solitario</p>
+        <div class="content-wrapper">
+            <main>
+                <article>
+                    <div class="article-image">
+                        <img src="./assets/img/lince-iberico.jpg" alt="Lince Ibérico">
+                    </div>
+                    <div class="article-content">
+                        <h2>El Lince Ibérico en la Península</h2>
+                        <div class="article-meta">
+                            Publicado el 15 de Noviembre de 2025 por María López
+                        </div>
+                        <p>El lince ibérico (Lynx pardinus) es el felino más amenazado del planeta. Su población, que llegó a estar al borde de la extinción con apenas 100 ejemplares a principios de siglo, ha experimentado una notable recuperación gracias a los programas de conservación implementados en Andalucía y Extremadura.</p>
+                        <p>Este felino de tamaño mediano presenta un pelaje pardo con manchas negras y unas características orejas puntiagudas con penachos de pelo negro. Su hábitat preferido son las dehesas y matorrales mediterráneos, donde caza principalmente conejos.</p>
+                        <div class="info-box" id="lince-iberico">
+                            <strong>Datos de observación:</strong>
+                            Nombre científico: Lynx pardinus<br>
+                            Edad estimada: 5 años<br>
+                            Ubicación: Doñana, Andalucía<br>
+                            Peso aproximado: 12.5 kg<br>
+                            Estado de conservación: En peligro
+                        </div>
                     </div>
                 </article>
 
-                <article class="post">
-                    <div class="thumb"><img
-                            src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?auto=format&fit=crop&w=800&q=60"
-                            alt="Oso pardo"></div>
-                    <div>
-                        <h3>Notas sobre el oso pardo</h3>
-                        <p class="meta">Publicado: <time datetime="2025-10-15">15 Oct 2025</time> — Autor:
-                            <strong>Carlos Ruiz</strong></p>
-                        <p class="excerpt">Poblaciones en la Cordillera Cantábrica comienzan a estabilizarse. Seguimos
-                            incorporando datos de peso, edad y número de ejemplares.</p>
-                        <p class="meta">Ficha: Nombre: Oso pardo — Edad: 7 años — Observado: Parque Natural</p>
+                <article>
+                    <div class="article-image">
+                        <img src="./assets/img/aguila-imperial.jpg" alt="Águila Imperial Ibérica">
+                    </div>
+                    <div class="article-content">
+                        <h2>El Águila Imperial Ibérica</h2>
+                        <div class="article-meta">
+                            Publicado el 10 de Noviembre de 2025 por Carlos Ruiz
+                        </div>
+                        <p>El águila imperial ibérica (Aquila adalberti) es una de las aves rapaces más emblemáticas de la fauna española. Endémica de la península ibérica, esta majestuosa ave se caracteriza por sus hombros blancos y su gran envergadura.</p>
+                        <p>Habita principalmente en bosques mediterráneos y dehesas, donde construye sus nidos en árboles de gran porte. Su dieta se basa fundamentalmente en conejos, aunque también caza otras presas como palomas y liebres.</p>
+                        <div class="info-box" id="aguila-imperial">
+                            <strong>Características principales:</strong>
+                            Envergadura: 190-220 cm<br>
+                            Hábitat: Bosques mediterráneos<br>
+                            Alimentación: Conejos principalmente<br>
+                            Población estimada: 500 parejas reproductoras
+                        </div>
                     </div>
                 </article>
 
-                <article class="post">
-                    <div class="thumb"><img
-                            src="https://images.unsplash.com/photo-1501700493788-fa1a5f3e8b3b?auto=format&fit=crop&w=800&q=60"
-                            alt="Gaviota"></div>
-                    <div>
-                        <h3>Aves marinas en la costa atlántica</h3>
-                        <p class="meta">Publicado: <time datetime="2025-09-29">29 Sep 2025</time> — Autor: <strong>Lucía
-                                Martín</strong></p>
-                        <p class="excerpt">Observaciones sobre rutas migratorias y afecciones por plásticos en las
-                            playas.</p>
-                        <p class="meta">Ficha: Nombre: Gaviota patiamarilla — Edad: 2 años — Observado en: Playa de la
-                            Concha</p>
+                <article>
+                    <div class="article-image">
+                        <img src="./assets/img/oso-pardo.jpg" alt="Oso Pardo Cantábrico">
+                    </div>
+                    <div class="article-content">
+                        <h2>El Oso Pardo Cantábrico</h2>
+                        <div class="article-meta">
+                            Publicado el 28 de Octubre de 2025 por Ana Fernández
+                        </div>
+                        <p>El oso pardo cantábrico (Ursus arctos arctos) es un símbolo de los bosques del norte peninsular. A pesar de haber estado al borde de la extinción en los años 90, las poblaciones han mostrado signos de recuperación en las últimas décadas.</p>
+                        <p>Este plantígrado habita en los bosques de la Cordillera Cantábrica, donde se alimenta principalmente de frutos, bellotas, miel e insectos. Los machos pueden alcanzar hasta 180 kg de peso.</p>
+                        <div class="info-box" id="oso-pardo">
+                            <strong>Información relevante:</strong>
+                            Ubicación: Cordillera Cantábrica<br>
+                            Peso: 90-180 kg<br>
+                            Alimentación: Omnívoro<br>
+                            Territorio: Hasta 200 km²
+                        </div>
                     </div>
                 </article>
-            </section>
+
+                <article>
+                    <div class="article-image">
+                        <img src="./assets/img/lobo-iberico.jpg" alt="Lobo Ibérico">
+                    </div>
+                    <div class="article-content">
+                        <h2>El Lobo Ibérico</h2>
+                        <div class="article-meta">
+                            Publicado el 20 de Octubre de 2025 por Pedro Sánchez
+                        </div>
+                        <p>El lobo ibérico (Canis lupus signatus) es una subespecie endémica de la península ibérica. Se caracteriza por presentar marcas negras en las patas delanteras y la cola, rasgos que lo diferencian de otras subespecies europeas.</p>
+                        <p>Vive en manadas familiares de 5 a 8 individuos, ocupando grandes territorios donde cazan principalmente ungulados silvestres. Su papel como depredador es fundamental para mantener el equilibrio de los ecosistemas.</p>
+                        <div class="info-box" id="lobo-iberico">
+                            <strong>Datos poblacionales:</strong>
+                            Población estimada: 2,000-2,500 ejemplares<br>
+                            Estructura social: Manadas de 5-8 individuos<br>
+                            Presas principales: Ciervo, jabalí, corzo<br>
+                            Distribución: Norte y centro peninsular
+                        </div>
+                    </div>
+                </article>
+            </main>
 
             <aside>
-                <div class="widget">
-                    <h4>Sobre este blog</h4>
-                    <p style="color:var(--muted);font-size:.95rem;margin:0">Blog independiente dedicado a compartir
-                        observaciones y fichas de fauna ibérica. Contenido creado con fines educativos.</p>
+                <div class="sidebar-widget">
+                    <h3>Sobre este blog</h3>
+                    <p>Blog dedicado al estudio y divulgación de la fauna ibérica. Nuestro objetivo es promover el conocimiento y la conservación de las especies autóctonas de la península.</p>
                 </div>
 
-                <div class="widget">
-                    <h4>Entradas recientes</h4>
-                    <ul style="padding-left:1rem;color:var(--muted);margin:0">
-                        <li>El gato montés observa nuevas áreas</li>
-                        <li>Informe sobre el oso pardo</li>
-                        <li>Impacto del plástico en aves marinas</li>
+                <div class="sidebar-widget">
+                    <h3>Artículos recientes</h3>
+                    <ul>
+                        <li><a href="#lince-iberico">El Lince Ibérico en la Península</a></li>
+                        <li><a href="#aguila-imperial">El Águila Imperial Ibérica</a></li>
+                        <li><a href="#oso-pardo">El Oso Pardo Cantábrico</a></li>
+                        <li><a href="#lobo-iberico">El Lobo Ibérico</a></li>
                     </ul>
                 </div>
 
-                <div class="widget">
-                    <h4>Etiquetas</h4>
+                <div class="sidebar-widget">
+                    <h3>Categorías</h3>
                     <div class="tags">
                         <span class="tag">Mamíferos</span>
                         <span class="tag">Aves</span>
+                        <span class="tag">Reptiles</span>
                         <span class="tag">Conservación</span>
-                        <span class="tag">Observaciones</span>
                     </div>
                 </div>
             </aside>
-        </main>
+        </div>
     </div>
-</body>
 
+    <footer>
+        <p>&copy; 2025 Fauna de España - Blog de Biodiversidad Ibérica</p>
+        <p>Todos los derechos reservados</p>
+    </footer>
+</body>
 </html>

@@ -61,22 +61,22 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     html: Optional[str] = None
 
-    try:
+    if args.file:
         if args.verbose:
-            print(f"[DEBUG] Intentando descargar desde URL: {args.url}")
-        html = fetch_url(args.url, timeout=args.timeout)
-    except ScraperError as e:
-        print(f"Advertencia: {e}")
-        if args.file:
+            print(f"[DEBUG] Leyendo el archivo local: {args.file}")
+        try:
+            html = read_file(args.file)
+        except ScraperError as e:
+            print(f"Error al leer archivo local: {e}")
+            return 2
+    else:
+        try:
             if args.verbose:
-                print(f"[DEBUG] Intentando fallback leyendo el archivo local: {args.file}")
-            try:
-                html = read_file(args.file)
-            except ScraperError as e2:
-                print(f"Error al leer archivo local: {e2}")
-                return 2
-        else:
-            print("No se pudo conectar a la URL y no se proporcionó --file. Activa Live Server o pasa la opción --file.")
+                print(f"[DEBUG] Intentando descargar desde URL: {args.url}")
+            html = fetch_url(args.url, timeout=args.timeout)
+        except ScraperError as e:
+            print(f"Error: {e}")
+            print("No se pudo conectar a la URL. Activa Live Server o usa la opción --file.")
             return 1
 
     try:
