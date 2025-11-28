@@ -26,7 +26,6 @@ INSERT INTO producto (id, nombre) VALUES (17, 'Pan Baguette 250g');
 INSERT INTO producto (id, nombre) VALUES (18, 'Mantequilla 250g');
 INSERT INTO producto (id, nombre) VALUES (19, 'Yogur Natural 125g');
 INSERT INTO producto (id, nombre) VALUES (20, 'Refresco Cola 2L');
-
 INSERT INTO ticket (id, numero_ticket, fecha_hora, total, id_sucursal, id_empleado) VALUES (1, '20010001', '2025-09-11 17:01:00', 30.76, 1, 1);
 INSERT INTO ticket_linea (id, id_ticket, id_producto, cantidad, precio_unitario, subtotal) VALUES (1, 1, 1, 2.0, 0.85, 1.70);
 INSERT INTO ticket_linea (id, id_ticket, id_producto, cantidad, precio_unitario, subtotal) VALUES (2, 1, 2, 1.0, 3.80, 3.80);

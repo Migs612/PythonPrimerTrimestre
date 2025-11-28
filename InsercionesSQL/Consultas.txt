@@ -1,0 +1,68 @@
+Ver un Ticket Específico
+
+SELECT
+  T.numero_ticket,
+  T.fecha_hora,
+  T.total,
+  E.nombre AS nombre_empleado
+FROM ticket AS T
+JOIN empleado AS E
+  ON T.id_empleado = E.id
+WHERE
+  T.id = 5;
+
+Ver las Líneas de un Ticket Específico
+
+SELECT
+  TL.cantidad,
+  P.nombre AS nombre_producto,
+  TL.precio_unitario,
+  TL.subtotal
+FROM ticket_linea AS TL
+JOIN producto AS P
+  ON TL.id_producto = P.id
+WHERE
+  TL.id_ticket = 5;
+
+Ver todos los empleados 
+
+SELECT
+  id,
+  codigo_empleado,
+  nombre
+FROM empleado;
+
+Ver todos los productos
+
+SELECT
+  id,
+  nombre
+FROM producto
+ORDER BY
+  nombre;
+
+Ver el Método de pago de un ticket Específico
+
+SELECT
+  T.numero_ticket,
+  P.metodo_pago,
+  P.monto,
+  P.autorizacion
+FROM pago AS P
+JOIN ticket AS T
+  ON P.id_ticket = T.id
+WHERE
+  P.id_ticket = 10;
+
+Ver el total recaudado por cada empleado
+
+SELECT
+  E.nombre AS nombre_empleado,
+  SUM(T.total) AS total_recaudado
+FROM ticket AS T
+JOIN empleado AS E
+  ON T.id_empleado = E.id
+GROUP BY
+  E.nombre
+ORDER BY
+  total_recaudado DESC;

@@ -1,5 +1,6 @@
 import re
 import glob
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
@@ -57,7 +58,7 @@ def parsear_factura(ruta_archivo, registro):
     sucursal_info = {'nombre': nombre_empresa, 'direccion': direccion, 'cif': cif}
     id_sucursal = registro.obtener_id('sucursal', nombre_empresa, sucursal_info)
 
-    nombre_cajero = match_cajero.group(2).strip() if match_cajero else "Cajero Genérico"
+    nombre_cajero = match_cajero.group(2).strip() if match_cajero else "Cajero"
     codigo_cajero = match_cajero.group(1).strip() if match_cajero else "999"
     id_empleado = registro.obtener_id('empleado', codigo_cajero, {'nombre': nombre_cajero})
 
@@ -133,8 +134,7 @@ def parsear_factura(ruta_archivo, registro):
 
 def generar_sql_final(registro, datos_procesados):
     sql = []
-    
-    sql.append("-- CATALOGOS")
+
     for nom, info in registro.catalogos['sucursal'].items():
         sql.append(f"INSERT INTO sucursal (id, nombre, direccion, cif) VALUES ({info['id']}, '{nom}', '{info['datos']['direccion']}', '{info['datos']['cif']}');")
 
@@ -144,7 +144,6 @@ def generar_sql_final(registro, datos_procesados):
     for nom, info in registro.catalogos['producto'].items():
         sql.append(f"INSERT INTO producto (id, nombre) VALUES ({info['id']}, '{nom}');")
 
-    sql.append("\n-- TRANSACCIONES")
     for datos in datos_procesados:
         sql.append(datos['sql_ticket'])
         for (id_prod, cant, sub) in datos['items']:
@@ -186,8 +185,35 @@ def main():
             f.write(generar_sql_final(registro, resultados))
         print(f"Tickets procesados.")
         print(f"SQL generado en: {archivo_salida}")
-    else:
-        print("No se pudo procesar ningún ticket correctamente.")
+
+        sql_runner_path = carpeta_base / "run_sql_xampp.py"
+        
+        if sql_runner_path.exists():
+            print("\nEjecutando script de conexión a MySQL...")
+            try:
+                comando = [
+                    "python", 
+                    str(sql_runner_path), 
+                    "--host", "localhost", 
+                    "--user", "root", 
+                    "--password", "root", 
+                    "--database", "facturas",
+                    "--sql-file", str(archivo_salida)
+                ]
+                
+                subprocess.run(
+                    comando, 
+                    check=True 
+                )
+                
+            except subprocess.CalledProcessError as e:
+                print(f"\nError al ejecutar run_sql_xampp.py: El comando falló con código {e.returncode}.")
+            except FileNotFoundError:
+                print(f"\nError: No se encontró el ejecutable 'python' o el script '{sql_runner_path.name}'.")
+            except Exception as e:
+                print(f"\nError inesperado al ejecutar el script: {e}")
+        else:
+            print(f"\nAdvertencia: El archivo '{sql_runner_path.name}' no fue encontrado. Saltando la ejecución.")
 
 if __name__ == "__main__":
     main()
